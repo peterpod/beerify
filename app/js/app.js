@@ -13,13 +13,10 @@ var beerify = angular.module('beerify', [
 beerify.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/phones', {
-        templateUrl: 'partials/phone-list.html'
-      }).
-      when('/phones/:phoneId', {
-        templateUrl: 'partials/phone-detail.html'
+      when('/home', {
+        templateUrl: 'partials/home.html'
       }).
       otherwise({
-        redirectTo: '/phones'
+        redirectTo: '/home'
       });
   }]);
