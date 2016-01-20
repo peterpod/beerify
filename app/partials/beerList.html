@@ -1,0 +1,25 @@
+<div ng-if="!beers">
+  Loading results...
+</div>
+
+<div ng-if="beers.status==='success'">
+
+  <div class='row'>
+  	<div class='col-xs-8 .col-lg-8' ng-repeat="beer in beers.data track by $index" ng-if="beer.style">
+  		<!-- ng-if will make sure there is some information being displayed
+  			 for each beer -->
+		<h2>{{beer.name}}</h2>
+		<h3>{{beer.style.name}}</h3>
+		<p>AbvMin: {{beer.style.abvMin}}</p>
+		<p>AbvMax: {{beer.style.abvMax}}</p>
+		<p>IbuMin: {{beer.style.ibuMin}}</p>
+		<p>IbuMax: {{beer.style.ibuMax}}</p>    		
+		<p>{{beer.style.description}}</p>
+		<hr>
+  	</div>
+  </div>
+</div>
+
+<div ng-if="beers.status==='failure'">
+  <p>No results found.</p>
+</div>
