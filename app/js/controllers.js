@@ -4,11 +4,10 @@
 
 var Controllers = angular.module('Controllers', []);
 
-// phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
-//   function($scope, Phone) {
-//     $scope.phones = Phone.query();
-//     $scope.orderProp = 'age';
-//   }]);
+Controllers.controller('searchCtrl', ['$scope',
+  function($scope) {
+
+  }]);
 
 // phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
 //   function($scope, $routeParams, Phone) {
