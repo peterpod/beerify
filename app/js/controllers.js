@@ -11,7 +11,7 @@ Controllers.controller('searchCtrl',
     $scope.beers = " ";
 
     $scope.fetch = function(){
-      var query = "http://api.brewerydb.com/v2/search?q=" + $scope.search + "&type=beer&key=1c42d0e40968577abeb1cbe8b8ee9d67&format=json";
+      var query = "https://api.brewerydb.com/v2/search?q=" + $scope.search + "&type=beer&key=1c42d0e40968577abeb1cbe8b8ee9d67&format=json";
       $http.get(query)
       .then(function(response){ 
         $scope.beers = response.data; 
