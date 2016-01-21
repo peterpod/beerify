@@ -22,7 +22,7 @@ Controllers.controller('searchCtrl',
     }
 })
 .controller('detailCtrl', function($scope, $http, $routeParams){
-  var query = "https://api.brewerydb.com/v2/beer/" + $routeParams.beerid + "?key=1c42d0e40968577abeb1cbe8b8ee9d67&format=json";
+  var query = "https://api.brewerydb.com/v2/beer/" + $routeParams.beerid + "?withBreweries=Y&withIngredients=Y&key=1c42d0e40968577abeb1cbe8b8ee9d67&format=json";
   $http.get(query)
   .then(function(response){ 
     $scope.beer = response.data.data; 
