@@ -26,30 +26,23 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
-    <h1>Beerify</h1>
-    <p>This is a simple application built to help beer lovers like you and me learn a little bit more 
-      about the beverages they drink. Search for drinks, keep track of drinks and explore to see what you like the most!</p>
-
-
-      <form ng-submit="fetch()">
-        <div class="input-group">
-          <input type="text" ng-model="search" 
-          class="form-control" placeholder="Search the name of a beer" name="srch-term" id="srch-term">
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-          </div>
-        </div>
-      </form>
-
-    </div>
+  	 <h2>{{beer.name}}</h2>
+  	 <h3>{{beer.style.name}}</h3>
   </div>
+</div>
 
   <div class="container">
-
-    <div id="main-info" 
-      ng-include="'partials/beerList.html'">
-    </div>
-
+    <img src="{{beer.labels.medium}}" style="float:left; margin-right:5px; padding-right:5px;">
+    <p>{{beer.style.description}}</p>
+    <p ng-if="beer.available">Availability: {{beer.available.name}}</p>
+    <p>{{beer.available.description}}</p>
+    <p ng-if="beer.abv">Alcohol Content: {{beer.abv}}%</p>
+    <p ng-if="!beer.abv">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
+    <p ng-if="beer.ibu">Ibu: {{beer.ibu}}</p>
+    <p ng-if="!beer.ibu && beer.style.ibuMin">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
+    <p ng-if="!beer.ibu && !beer.style.ibuMin">Ibu: Unavailable</p>
+    <p ng-if="beer.glass">Glass: {{beer.glass.name}}</p>
+    <button type="button" ng-click="back()" class="btn btn-info">Back</button>
   <br>
   <hr>
 

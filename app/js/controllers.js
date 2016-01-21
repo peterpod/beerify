@@ -5,9 +5,9 @@
 var Controllers = angular.module('Controllers', []);
 
 Controllers.controller('searchCtrl', 
-  function($scope, $http,$timeout) {
+  function($scope, $http) {
 
-    $scope.search = "Yuengling";
+    $scope.search = "Raging Bitch";
     $scope.beers = " ";
 
     $scope.fetch = function(){
@@ -15,9 +15,25 @@ Controllers.controller('searchCtrl',
       $http.get(query)
       .then(function(response){ 
         $scope.beers = response.data; 
-        console.log(JSON.stringify($scope.beers));
+
         $scope.$applyAsync();
         return $scope.beers;  
       });
     }
+})
+.controller('detailCtrl', function($scope, $http, $routeParams){
+  var query = "https://api.brewerydb.com/v2/beer/" + $routeParams.beerid + "?key=1c42d0e40968577abeb1cbe8b8ee9d67&format=json";
+  $http.get(query)
+  .then(function(response){ 
+    $scope.beer = response.data.data; 
+    console.log($scope.beer);
+
+    $scope.$applyAsync();
+    return $scope.beers;  
+  });
+
+  $scope.back = function() {
+    window.history.back();
+  };
+  
 });

@@ -17,6 +17,10 @@ beerify.config(['$routeProvider',
         templateUrl: 'partials/home.html',
         controller: 'searchCtrl'
       }).
+      when('/home/:beerid', {
+        templateUrl: 'partials/details.html',
+        controller: 'detailCtrl'
+      }).
       otherwise({
         redirectTo: '/home'
       });

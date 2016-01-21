@@ -17,102 +17,11 @@
   <script src="js/services.js"></script>
 
 </head>
-<body ng-app="beerify" ng-controller='searchCtrl'>
+<body ng-app="beerify">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Beerify</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Beerify</h1>
-        <p>This is a simple application built to help beer lovers like you and me learn a little bit more 
-        about the beverages they drink. Search for drinks, keep track of drinks and explore to see what you like the most!</p>
-
-<!--         <div class="view-container">
-          <div ng-view class="view-frame"></div>
-        </div> -->
-
-        <form ng-submit="fetch()">
-          <div class="input-group">
-              <input type="text" ng-model="search" 
-                     class="form-control" placeholder="Search the name of a beer" name="srch-term" id="srch-term">
-              <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-          </div>
-        </form>
-
-      </div>
+    <div class="view-container">
+      <div ng-view class="view-frame"></div>
     </div>
 
-    <div class="container">
-
-<!--       <div id="main-info" 
-           ng-include="'partials/beerList.html'">
-      </div> -->
-
-      <div ng-if="!beers">
-        Loading results...
-      </div>
-      <div ng-if="beers.status==='success'">
-<!--         {{beers}}
- -->        <div class='row'>
-          <div class='col-xs-8 .col-lg-8' ng-repeat="beer in beers.data track by $index" ng-if="beer.style">
-            <!-- ng-if will make sure there is some information being displayed
-               for each beer -->
-            <h2>{{beer.name}}</h2>
-            <h3>{{beer.style.name}}</h3>
-            <p ng-if="beer.abv">Alcohol Content: {{beer.abv}}%</p>
-            <p ng-if="!beer.abv">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
-            <p ng-if="beer.ibu">Ibu: {{beer.ibu}}</p>
-            <p ng-if="!beer.ibu && beer.style.ibuMin">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
-            <p ng-if="!beer.ibu && !beer.style.ibuMin">Ibu: Unavailable</p>
-            <p>{{beer.style.description}}</p>
-            <hr>
-          </div>
-        </div>
-      </div>
-
-      <div ng-if="beers.status==='failure'">
-        <p>No results found.</p>
-      </div>
-
-      <br>
-      <hr>
-
-      <footer>
-        <p>&copy; 2015 Company, Inc.</p>
-      </footer>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-  </body>
+</body>
 </html>
