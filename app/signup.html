@@ -1,3 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Beerify</title>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
+
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+
+
+</head>
+<body ng-app="beerify">
   <script>
      $(document).ready(function(){
         $('.dropdown-toggle').dropdown()
@@ -64,31 +87,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container">
-    <h1>Beerify</h1>
-    <p>This is a simple application built to help beer lovers like you and me learn a little bit more 
-      about the beverages they drink. Search for drinks, keep track of drinks and explore to see what you like the most!</p>
-
-
-      <form ng-submit="fetch()">
-        <div class="input-group">
-          <input type="text" ng-model="search" 
-          class="form-control" placeholder="Search the name of a beer" name="srch-term" id="srch-term">
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-          </div>
-        </div>
-      </form>
-
-    </div>
-  </div>
-
   <div class="container">
 
     <div id="main-info" 
-      ng-include="'partials/beerList.html'">
+      ng-include="'partials/signup.html'">
     </div>
 
   <br>
@@ -98,3 +100,5 @@
     <p>&copy; 2015 Company, Inc.</p>
   </footer>
 </div> <!-- /container -->
+</body>
+</html>
