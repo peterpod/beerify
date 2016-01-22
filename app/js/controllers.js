@@ -36,4 +36,45 @@ Controllers.controller('searchCtrl',
     window.history.back();
   };
   
+}).controller('LoginCtrl', function ($scope) {
+  // Form data for the login modal
+  $scope.data = {};
+    
+  $scope.signup = function(){
+    // $state.go('signup');
+  }
+  $scope.login = function(){
+    // $state.go('signin');
+  }
+
+  $scope.signupEmail = function(){
+      //Create a new user on Parse
+      var user = new Parse.User();
+      user.set("username", $scope.data.username);
+      user.set("password", $scope.data.password);
+      user.set("email", $scope.data.email);
+     
+     
+      user.signUp(null, {
+        success: function(user) {
+          console.log("Success! You have now signed up.");
+        },
+        error: function(user, error) {
+          alert("We were unable to create your account. Please try again");
+        }
+      });
+     
+    };
+ 
+  $scope.loginEmail = function(){
+      Parse.User.logIn($scope.data.username.toLowerCase(), $scope.data.password, {
+        success: function(user) {
+          console.log("Success! You have now logged in.");
+        },
+        error: function(user, error) {
+          // The login failed. Check error to see why.
+          alert("You've provided the wrong credentials! Please try again.");
+        }
+      });
+    };
 });
