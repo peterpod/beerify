@@ -68,14 +68,13 @@
       <div class="col-sm-9">
         <h3>{{beer.style.name}}</h3>
         <p>{{beer.style.description}}</p>
-        <p ng-if="beer.abv">Alcohol Content: {{beer.abv}}%</p>
-        <p ng-if="!beer.abv">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
-        <p ng-if="beer.ibu">Ibu: {{beer.ibu}}</p>
-        <p ng-if="!beer.ibu && beer.style.ibuMin">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
-        <p ng-if="!beer.srm && beer.style.srmMin">Srm: {{ ( ( 1 * beer.style.srmMin) + ( 1 * beer.style.srmMax) ) / 2 }}</p>
-        <p ng-if="beer.available">Availability: {{beer.available.name}}<br>
-        {{beer.available.description}}</p>
-        <p ng-if="beer.glass">Glass: {{beer.glass.name}}</p>
+        <p ng-if="beer.abv" style="margin:0px;">Alcohol Content: {{beer.abv}}%</p>
+        <p ng-if="!beer.abv" style="margin:0px;">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
+        <p ng-if="beer.ibu" style="margin:0px;">Ibu: {{beer.ibu}}</p>
+        <p ng-if="!beer.ibu && beer.style.ibuMin" style="margin:0px;">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
+        <p ng-if="!beer.srm && beer.style.srmMin" style="margin:0px;">Srm: {{ ( ( 1 * beer.style.srmMin) + ( 1 * beer.style.srmMax) ) / 2 }}</p>
+        <p ng-if="beer.available" style="margin:0px;">Availability: {{beer.available.description}}</p>
+        <p ng-if="beer.glass" style="margin:0px;">Glass: {{beer.glass.name}}</p>
       </div>
     </div>
     <hr>
@@ -85,8 +84,8 @@
       </div>
       <div class="col-sm-9">
         <h3>Brewery</h3>
-        <h4>{{beer.breweries[0].name}}</h4>
-        <strong>Established {{beer.breweries[0].established}} </strong>
+        <a href="{{beer.breweries[0].website}}"><h4>{{beer.breweries[0].name}}</h4></a>
+        <strong>Established {{beer.breweries[0].established}} in {{beer.breweries[0].locations[0].locality}}</strong>
         <p>{{beer.breweries[0].description}}</p>
       </div>
     </div>
