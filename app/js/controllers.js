@@ -36,7 +36,7 @@ Controllers.controller('searchCtrl',
     window.history.back();
   };
   
-}).controller('LoginCtrl', function ($scope) {
+}).controller('LoginCtrl', function ($scope, $window) {
   // Form data for the login modal
   $scope.data = {};
     
@@ -58,6 +58,7 @@ Controllers.controller('searchCtrl',
       user.signUp(null, {
         success: function(user) {
           console.log("Success! You have now signed up.");
+          $window.location.href = 'index.html';
         },
         error: function(user, error) {
           alert("We were unable to create your account. Please try again");
@@ -70,6 +71,7 @@ Controllers.controller('searchCtrl',
       Parse.User.logIn($scope.data.username.toLowerCase(), $scope.data.password, {
         success: function(user) {
           console.log("Success! You have now logged in.");
+          $window.location.href = 'index.html';
         },
         error: function(user, error) {
           // The login failed. Check error to see why.
