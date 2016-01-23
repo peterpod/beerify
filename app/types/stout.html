@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Beerify</title>
 
+  <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
   <script src="../bower_components/jquery/dist/jquery.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
@@ -18,16 +19,14 @@
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="../css/app.css">
 
-
-
 </head>
 <body ng-app="beerify">
   <script>
-     $(document).ready(function(){
-        $('.dropdown-toggle').dropdown()
-    });
-  </script>
-  <nav class="navbar navbar-default">
+   $(document).ready(function(){
+    $('.dropdown-toggle').dropdown()
+  });
+ </script>
+ <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -46,64 +45,74 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Types
-  <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="ale.html">Ale</a></li>
-            <li><a href="lager.html">Lager</a></li>
-            <li><a href="stout.html">Stouts & Porters</a></li>
-            <li><a href="malt.html">Malts</a></li>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="ale.html">Ale</a></li>
+              <li><a href="lager.html">Lager</a></li>
+              <li><a href="stout.html">Stouts & Porters</a></li>
+              <li><a href="malt.html">Malts</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styles
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../styles/amber.html">Amber</a></li>
+                <li><a href="../styles/blonde.html">Blonde</a></li>
+                <li><a href="../styles/brown.html">Brown</a></li>
+                <li><a href="../styles/dark.html">Dark</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="../styles/cream.html">Cream</a></li>
+                <li><a href="../styles/golden.html">Golden</a></li>        
+                <li><a href="../styles/fruit.html">Fruit</a></li>    
+                <li><a href="../styles/ipa.html">India Pale Ale</a></li>
+                <li><a href="../styles/light.html">Light</a></li>
+                <li><a href="../styles/red.html">Red</a></li>
+              </ul>
+            </ul>
+            <ul class="nav navbar-nav nav navbar-right">
+              <li class="dropdown">
+                <a ng-if"sessionUser" href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{sessionUser.attributes.username}}
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="../login.html">Login</a></li>
+                    <li><a href="../signup.html">Signup</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styles
-  <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="../styles/amber.html">Amber</a></li>
-            <li><a href="../styles/blonde.html">Blonde</a></li>
-            <li><a href="../styles/brown.html">Brown</a></li>
-            <li><a href="../styles/dark.html">Dark</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="../styles/cream.html">Cream</a></li>
-            <li><a href="../styles/golden.html">Golden</a></li>        
-            <li><a href="../styles/fruit.html">Fruit</a></li>    
-            <li><a href="../styles/ipa.html">India Pale Ale</a></li>
-            <li><a href="../styles/light.html">Light</a></li>
-            <li><a href="../styles/red.html">Red</a></li>
-          </ul>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container">
-    <h1>Stout & Porters</h1>
-    <p>There’s very little distinction between a Porter and a Stout, but they do have their differences.
-    <br><br>
-    Porter is a dark, almost black, fruity-dry, top fermenting style. An ale, porter is brewed with a combination of roasted malt to impart flavour, colour and aroma. Stout is also a black, roast brew made by top fermentation.
-    <br><br>
-    Stout, not as sweet to the taste, features a rich, creamy head and is flavoured and coloured by barley. Stouts often use a portion of unmalted roasted barley to develop a dark, slightly astringent, coffee-like character.</p>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Stout & Porters</h1>
+        <p>There’s very little distinction between a Porter and a Stout, but they do have their differences.
+          <br><br>
+          Porter is a dark, almost black, fruity-dry, top fermenting style. An ale, porter is brewed with a combination of roasted malt to impart flavour, colour and aroma. Stout is also a black, roast brew made by top fermentation.
+          <br><br>
+          Stout, not as sweet to the taste, features a rich, creamy head and is flavoured and coloured by barley. Stouts often use a portion of unmalted roasted barley to develop a dark, slightly astringent, coffee-like character.</p>
 
 
 
-    </div>
-  </div>
+        </div>
+      </div>
 
-  <div class="container">
-    <h3>Here are some of our favorites</h3>
+      <div class="container">
+        <h3>Here are some of our favorites</h3>
 
-  <br>
-  <hr>
+        <br>
+        <hr>
 
-  <footer>
-    <p>&copy; 2015 Company, Inc.</p>
-  </footer>
-</div> <!-- /container -->
+        <footer>
+          <p>&copy; 2015 Company, Inc.</p>
+        </footer>
+      </div> <!-- /container -->
 
-</body>
-</html>
+    </body>
+    </html>

@@ -5,7 +5,7 @@
 var Controllers = angular.module('Controllers', []);
 
 Controllers.controller('searchCtrl', 
-  function($scope, $http) {
+  function($scope, $http, $rootScope) {
 
     $scope.search = "Raging Bitch";
     $scope.beers = " ";
@@ -19,6 +19,10 @@ Controllers.controller('searchCtrl',
         $scope.$applyAsync();
         return $scope.beers;  
       });
+    }
+
+    $scope.logout = function(){
+      Parse.User.logout();
     }
 })
 .controller('detailCtrl', function($scope, $http, $routeParams){
@@ -36,16 +40,10 @@ Controllers.controller('searchCtrl',
     window.history.back();
   };
   
-}).controller('LoginCtrl', function ($scope, $window) {
+}).controller('LoginCtrl', function ($scope, $window, $rootScope) {
   // Form data for the login modal
   $scope.data = {};
     
-  $scope.signup = function(){
-    // $state.go('signup');
-  }
-  $scope.login = function(){
-    // $state.go('signin');
-  }
 
   $scope.signupEmail = function(){
       //Create a new user on Parse
@@ -58,10 +56,14 @@ Controllers.controller('searchCtrl',
       user.signUp(null, {
         success: function(user) {
           console.log("Success! You have now signed up.");
+          var currentUser = Parse.User.current();
+          var username = currentUser.get("username");
+          $rootScope.user = username;
+          alert("Hello " + username + ", we have successfully created your account.");
           $window.location.href = 'index.html';
         },
         error: function(user, error) {
-          alert("We were unable to create your account. Please try again");
+          alert(JSON.stringify(user) + JSON.stringify(error) + "We were unable to create your account. Please try again");
         }
       });
      
@@ -72,10 +74,11 @@ Controllers.controller('searchCtrl',
         success: function(user) {
           console.log("Success! You have now logged in.");
           $window.location.href = 'index.html';
+          $rootScope.user = Parse.User.current();
         },
         error: function(user, error) {
           // The login failed. Check error to see why.
-          alert("You've provided the wrong credentials! Please try again.");
+          alert(JSON.stringify(user)+ "You've provided the wrong credentials! Please try again.");
         }
       });
     };

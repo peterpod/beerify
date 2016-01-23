@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Beerify</title>
 
+  <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
   <script src="../bower_components/jquery/dist/jquery.js"></script>
   <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
@@ -71,6 +72,16 @@
             <li><a href="ipa.html">India Pale Ale</a></li>
             <li><a href="light.html">Light</a></li>
             <li><a href="red.html">Red</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav nav navbar-right">
+        <li class="dropdown">
+          <a ng-if"sessionUser" href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{sessionUser.attributes.username}}
+  <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../login.html">Login</a></li>
+            <li><a href="../signup.html">Signup</a></li>
           </ul>
         </li>
       </ul>

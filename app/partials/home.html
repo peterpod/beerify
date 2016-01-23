@@ -52,7 +52,7 @@
       </ul> 
       <ul class="nav navbar-nav nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login
+          <a ng-if"sessionUser" href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{sessionUser.attributes.username}}
   <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="login.html">Login</a></li>
