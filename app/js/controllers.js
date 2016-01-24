@@ -39,6 +39,24 @@ Controllers.controller('searchCtrl',
   $scope.back = function() {
     window.history.back();
   };
+
+  $scope.favorite = function(){
+    var ParseFavorites = Parse.Object.extend("favorites");
+    var favorites = new ParseFavorites();
+    var currentUser = Parse.User.current();
+    var username = currentUser.get("username");
+    /* check if this user already has this favorite */
+    favorites.set("name", $scope.beer.name);
+    favorites.set("user_id", Parse.User.current());
+    favorites.save(null, {
+        success: function(favorite){
+            console.log('Favorite beer has been saved: ' + favorite);
+        },
+        error: function(favorite, error){
+            alert('Failed to save favorite: ' + error.message);
+        }
+    });
+  }
   
 }).controller('LoginCtrl', function ($scope, $window, $rootScope) {
   // Form data for the login modal

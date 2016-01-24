@@ -66,7 +66,12 @@
         <img src="{{beer.labels.medium}}" style="float:left; margin-right:5px; padding-right:5px;">
       </div>
       <div class="col-sm-9">
-        <h3>{{beer.style.name}}</h3>
+        <div>
+          <h3 style="float:left;">{{beer.style.name}}</h3>
+          <button id="favorite" style="margin: 20px 10px 10px 10px;" type="button" class="btn btn-default" aria-label="Right Align" ng-click="favorite();">
+            <span class="glyphicon glyphicon-star" aria-hidden="true">Favorite</span>
+          </button>
+        </div>
         <p>{{beer.style.description}}</p>
         <p ng-if="beer.abv" style="margin:0px;">Alcohol Content: {{beer.abv}}%</p>
         <p ng-if="!beer.abv" style="margin:0px;">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
