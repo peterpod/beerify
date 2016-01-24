@@ -40,22 +40,48 @@ Controllers.controller('searchCtrl',
     window.history.back();
   };
 
-  $scope.favorite = function(){
+  function countFavorites(){
+    var ParseFavorites = Parse.Object.extend("favorites");
+    var favorites = new ParseFavorites();
+    var currentUser = Parse.User.current();
+    var checkUser = new Parse.Query(ParseFavorites);
+    checkUser.equalTo("user_id", currentUser);
+    checkUser.equalTo("name", $scope.beer.name);
+    checkUser.count({
+      success: function(count){
+        if(count == 0){
+          return saveFavorite();
+        }
+        else{
+          return;
+        }
+      },
+      error: function(error){
+        console.log(error);
+        return error;
+      }
+    });
+  }
+
+  function saveFavorite(){
     var ParseFavorites = Parse.Object.extend("favorites");
     var favorites = new ParseFavorites();
     var currentUser = Parse.User.current();
     var username = currentUser.get("username");
-    /* check if this user already has this favorite */
     favorites.set("name", $scope.beer.name);
     favorites.set("user_id", Parse.User.current());
     favorites.save(null, {
         success: function(favorite){
-            console.log('Favorite beer has been saved: ' + favorite);
+            console.log('Favorite beer has been saved: ' + JSON.stringify(favorite));
         },
         error: function(favorite, error){
             alert('Failed to save favorite: ' + error.message);
         }
     });
+  }
+
+  $scope.favorite = function(){
+    countFavorites();
   }
   
 }).controller('LoginCtrl', function ($scope, $window, $rootScope) {
