@@ -1,20 +1,20 @@
 <script>
-   $(document).ready(function(){
-      $('.dropdown-toggle').dropdown()
-  });
+ $(document).ready(function(){
+  $('.dropdown-toggle').dropdown()
+});
 </script>
 <nav class="navbar navbar-default">
-<div class="container-fluid">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Beerify</a>
-  </div>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Beerify</a>
+    </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">    
@@ -22,83 +22,93 @@
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Types
-  <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Ale</a></li>
-            <li><a href="#">Lager</a></li>
-            <li><a href="#">Stouts & Porters</a></li>
-            <li><a href="#">Malts</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styles
-  <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Light</a></li>
-            <li><a href="#">Amber</a></li>
-            <li><a href="#">Blonde</a></li>
-            <li><a href="#">Brown</a></li>
-            <li><a href="#">Dark</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Cream</a></li>
-            <li><a href="#">Golden</a></li>        
-            <li><a href="#">Fruit</a></li>    
-            <li><a href="#">India Pale Ale</a></li>
-            <li><a href="#">Red</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="types/ale.html">Ale</a></li>
+              <li><a href="types/lager.html">Lager</a></li>
+              <li><a href="types/stout.html">Stouts & Porters</a></li>
+              <li><a href="types/malt.html">Malts</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Styles
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="styles/light.html">Light</a></li>
+                <li><a href="styles/amber.html">Amber</a></li>
+                <li><a href="styles/blonde.html">Blonde</a></li>
+                <li><a href="styles/brown.html">Brown</a></li>
+                <li><a href="styles/dark.html">Dark</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="styles/cream.html">Cream</a></li>
+                <li><a href="styles/golden.html">Golden</a></li>        
+                <li><a href="styles/fruit.html">Fruit</a></li>    
+                <li><a href="styles/ipa.html">India Pale Ale</a></li>
+                <li><a href="styles/red.html">Red</a></li>
+              </ul>
+            </li>
+          </ul> 
+          <ul class="nav navbar-nav nav navbar-right">
+            <li class="dropdown">
+              <a ng-if"sessionUser" href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, {{sessionUser.attributes.username}}
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="signup.html">Signup</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
-<div class="jumbotron">
-  <div class="container">
-  	 <h2>{{beer.name}}</h2>
-  </div>
-</div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <img src="{{beer.labels.medium}}" style="float:left; margin-right:5px; padding-right:5px;">
-      </div>
-      <div class="col-sm-9">
-        <div>
-          <h3 style="float:left;">{{beer.style.name}}</h3>
-          <button id="favorite" style="margin: 20px 10px 10px 10px;" type="button" class="btn btn-default" aria-label="Right Align" ng-click="favorite();">
-            <span class="glyphicon glyphicon-star" aria-hidden="true">Favorite</span>
-          </button>
+      <div class="jumbotron">
+        <div class="container">
+          <h2>{{beer.name}}</h2>
         </div>
-        <p>{{beer.style.description}}</p>
-        <p ng-if="beer.abv" style="margin:0px;">Alcohol Content: {{beer.abv}}%</p>
-        <p ng-if="!beer.abv" style="margin:0px;">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
-        <p ng-if="beer.ibu" style="margin:0px;">Ibu: {{beer.ibu}}</p>
-        <p ng-if="!beer.ibu && beer.style.ibuMin" style="margin:0px;">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
-        <p ng-if="!beer.srm && beer.style.srmMin" style="margin:0px;">Srm: {{ ( ( 1 * beer.style.srmMin) + ( 1 * beer.style.srmMax) ) / 2 }}</p>
-        <p ng-if="beer.available" style="margin:0px;">Availability: {{beer.available.description}}</p>
-        <p ng-if="beer.glass" style="margin:0px;">Glass: {{beer.glass.name}}</p>
       </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-sm-3">
-        <img src="{{beer.breweries[0].images.squareMedium}}" style="float:left; margin-right:5px; padding-right:5px;">      
-      </div>
-      <div class="col-sm-9">
-        <h3>Brewery</h3>
-        <a href="{{beer.breweries[0].website}}"><h4>{{beer.breweries[0].name}}</h4></a>
-        <strong>Established {{beer.breweries[0].established}} in {{beer.breweries[0].locations[0].locality}}</strong>
-        <p>{{beer.breweries[0].description}}</p>
-      </div>
-    </div>
-    <button type="button" ng-click="back()" class="btn btn-info">Back</button>
-  <br>
-  <hr>
 
-  <footer>
-    <p>&copy; 2015 Company, Inc.</p>
-  </footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="{{beer.labels.medium}}" style="float:left; margin-right:5px; padding-right:5px;">
+          </div>
+          <div class="col-sm-9">
+            <div>
+              <h3 style="float:left;">{{beer.style.name}}</h3>
+              <button id="favorite" style="margin: 20px 10px 10px 10px;" type="button" class="btn btn-default" aria-label="Right Align" ng-click="favorite();">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">Favorite</span>
+              </button>
+            </div>
+            <p>{{beer.style.description}}</p>
+            <p ng-if="beer.abv" style="margin:0px;">Alcohol Content: {{beer.abv}}%</p>
+            <p ng-if="!beer.abv" style="margin:0px;">Alcohol Content: {{ ( ( 1 * beer.style.abvMin) + ( 1 * beer.style.abvMax) ) / 2 }}%</p>
+            <p ng-if="beer.ibu" style="margin:0px;">Ibu: {{beer.ibu}}</p>
+            <p ng-if="!beer.ibu && beer.style.ibuMin" style="margin:0px;">Ibu: {{ ( ( 1 * beer.style.ibuMin) + ( 1 * beer.style.ibuMax) ) / 2 }}</p>
+            <p ng-if="!beer.srm && beer.style.srmMin" style="margin:0px;">Srm: {{ ( ( 1 * beer.style.srmMin) + ( 1 * beer.style.srmMax) ) / 2 }}</p>
+            <p ng-if="beer.available" style="margin:0px;">Availability: {{beer.available.description}}</p>
+            <p ng-if="beer.glass" style="margin:0px;">Glass: {{beer.glass.name}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="{{beer.breweries[0].images.squareMedium}}" style="float:left; margin-right:5px; padding-right:5px;">      
+          </div>
+          <div class="col-sm-9">
+            <h3>Brewery</h3>
+            <a href="{{beer.breweries[0].website}}"><h4>{{beer.breweries[0].name}}</h4></a>
+            <strong>Established {{beer.breweries[0].established}} in {{beer.breweries[0].locations[0].locality}}</strong>
+            <p>{{beer.breweries[0].description}}</p>
+          </div>
+        </div>
+        <button type="button" ng-click="back()" class="btn btn-info">Back</button>
+        <br>
+        <hr>
+
+        <footer>
+          <p>&copy; 2015 Company, Inc.</p>
+        </footer>
 </div> <!-- /container -->

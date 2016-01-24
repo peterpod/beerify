@@ -42,7 +42,6 @@ Controllers.controller('searchCtrl',
 
   function countFavorites(){
     var ParseFavorites = Parse.Object.extend("favorites");
-    var favorites = new ParseFavorites();
     var currentUser = Parse.User.current();
     var checkUser = new Parse.Query(ParseFavorites);
     checkUser.equalTo("user_id", currentUser);
@@ -70,6 +69,10 @@ Controllers.controller('searchCtrl',
     var username = currentUser.get("username");
     favorites.set("name", $scope.beer.name);
     favorites.set("user_id", Parse.User.current());
+    favorites.set("shortName", $scope.beer.style.name);
+    if($scope.beer.labels){
+      favorites.set("image", $scope.beer.labels.medium);
+    }
     favorites.save(null, {
         success: function(favorite){
             console.log('Favorite beer has been saved: ' + JSON.stringify(favorite));
@@ -126,4 +129,23 @@ Controllers.controller('searchCtrl',
         }
       });
     };
+})
+.controller('favoriteCtrl', function($scope, $http, $routeParams){
+  $scope.favorites = [];
+
+  var ParseFavorites = Parse.Object.extend("favorites");
+  var currentUser = Parse.User.current();
+  var query = new Parse.Query(ParseFavorites);
+  query.equalTo("user_id", currentUser);
+  query.find({
+    success: function(favorites) {
+      console.log(favorites);
+      $scope.favorites = favorites;
+      $scope.$apply();
+    },
+    error: function(error) {
+      alert("Error: " + error.code + " " + error.message);
+    }
+  });
+  
 });
